@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Conia\Renderer\Boiler;
 
 use Conia\Boiler\Engine;
-use Conia\Boiler\Exception\RendererException;
 use Conia\Chuck\Factory;
 use Conia\Chuck\Renderer\Renderer as RendererInterface;
 use Conia\Chuck\Response;
@@ -53,7 +52,7 @@ class Renderer implements RendererInterface
             $this->dirs = [$this->dirs];
         } else {
             if (count($this->dirs) === 0) {
-                throw new RendererException('T');
+                throw new RendererException('Provide at least one template directory');
             }
         }
 
