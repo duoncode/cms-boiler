@@ -1,0 +1,52 @@
+{
+    "name": "conia/chuck-boiler",
+    "description": "Boiler templates for Chuck framework",
+    "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ebene fünf GmbH",
+            "email": "conia@ebenefuenf.de",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://conia.dev/chuck-boiler",
+    "keywords": [
+        "conia",
+        "templating",
+        "templates",
+        "boiler",
+        "chuck"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Conia\\Renderer\\Boiler\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Conia\\Renderer\\Boiler\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "conia/boiler": "dev-main"
+    },
+    "require-dev": {
+        "conia/chuck": "dev-main",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "nyholm/psr7": "^1.5",
+        "nyholm/psr7-server": "^1",
+        "pestphp/pest": "^1.21",
+        "staabm/annotate-pull-request-from-checkstyle": "^1.8",
+        "vimeo/psalm": "^5.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
