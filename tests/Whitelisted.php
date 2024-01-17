@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Conia\Renderer\Boiler\Tests;
+namespace Conia\Cms\Boiler\Tests;
 
 class Whitelisted extends WhitelistBase
 {

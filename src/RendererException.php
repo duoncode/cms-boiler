@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Conia\Renderer\Boiler;
+namespace Conia\Cms\Boiler;
 
 use RuntimeException;
 

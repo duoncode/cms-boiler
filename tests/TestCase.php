@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Conia\Renderer\Boiler\Tests;
+namespace Conia\Cms\Boiler\Tests;
 
-use Conia\Chuck\Psr\Nyholm;
+use Conia\Core\Factory\Nyholm;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**

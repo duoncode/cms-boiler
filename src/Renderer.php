@@ -2,14 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Conia\Renderer\Boiler;
+namespace Conia\Cms\Boiler;
 
 use Conia\Boiler\Engine;
-use Conia\Chuck\Factory;
-use Conia\Chuck\Renderer\Renderer as RendererInterface;
-use Conia\Chuck\Response;
-use Throwable;
-use Traversable;
+use Conia\Core\Factory;
+use Conia\Cms\Renderer as RendererInterface;
 
 /**
  * @psalm-api
@@ -28,54 +25,31 @@ class Renderer implements RendererInterface
         protected array $defaults = [],
         protected array $whitelist = [],
         protected bool $autoescape = true,
+        protected string $contentType = 'text/html',
     ) {
     }
 
-    public function render(mixed $data, mixed ...$args): string
+    public function render(string $id, array $context): string
     {
-        if ($data instanceof Traversable) {
-            $context = iterator_to_array($data);
-        } elseif (is_array($data)) {
-            $context = $data;
-        } else {
-            throw new RendererException('The template context must be an array or a Traversable');
+        $dirs = (array)$this->dirs;
+
+        if (count($dirs) === 0) {
+            throw new RendererException('Provide at least one template directory');
         }
 
-        try {
-            $templateName = (string)$args[0];
-            assert(!empty($templateName));
-        } catch (Throwable) {
-            throw new RendererException('The template must be passed to the renderer');
-        }
+        $engine = $this->createEngine($dirs);
 
-        if (is_string($this->dirs)) {
-            $this->dirs = [$this->dirs];
-        } else {
-            if (count($this->dirs) === 0) {
-                throw new RendererException('Provide at least one template directory');
-            }
-        }
-
-        $engine = $this->createEngine($this->dirs);
-
-        return $engine->render($templateName, $context);
-    }
-
-    public function response(mixed $data, mixed ...$args): Response
-    {
-        $response = Response::fromFactory($this->factory)->status(
-            (int)($args['statusCode'] ?? 200),
-            (string)($args['reasonPhrase'] ?? ''),
-        );
-
-        return $response
-            ->header('Content-Type', (string)(($args['contentType'] ?? null) ?: 'text/html'))
-            ->body($this->render($data, ...$args));
+        return $engine->render($id, $context);
     }
 
     /** @psalm-param DirsInput $dirs */
-    protected function createEngine(string|array $dirs): Engine
+    protected function createEngine(array $dirs): Engine
     {
         return new Engine($dirs, $this->defaults, $this->whitelist, $this->autoescape);
+    }
+
+    public function contentType(): string
+    {
+        return $this->contentType;
     }
 }

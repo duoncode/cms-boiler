@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Conia\Boiler\Exception\LookupException;
-use Conia\Chuck\Config;
-use Conia\Renderer\Boiler\Renderer;
-use Conia\Renderer\Boiler\RendererException;
-use Conia\Renderer\Boiler\Tests\TestCase;
-use Conia\Renderer\Boiler\Tests\Whitelisted;
+use Conia\Core\Config;
+use Conia\Cms\Boiler\Renderer;
+use Conia\Cms\Boiler\RendererException;
+use Conia\Cms\Boiler\Tests\TestCase;
+use Conia\Cms\Boiler\Tests\Whitelisted;
 
 uses(TestCase::class);
 
@@ -19,17 +19,9 @@ test('Html (array of template dirs)', function () {
         [],
         true,
     );
-    $response = $renderer->response(['text' => 'numbers', 'arr' => [1, 2, 3]], 'renderer');
+    $result = $renderer->render('renderer', ['text' => 'numbers', 'arr' => [1, 2, 3]]);
 
-    $hasContentType = false;
-    foreach ($response->getHeaders() as $key => $value) {
-        if ($key === 'Content-Type' && $value[0] === 'text/html') {
-            $hasContentType = true;
-        }
-    }
-
-    expect($hasContentType)->toBe(true);
-    expect((string)$response->getBody())->toBe("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>");
+    expect($result)->toBe("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>");
 });
 
 test('Html (template dir as string)', function () {
@@ -40,9 +32,9 @@ test('Html (template dir as string)', function () {
         [],
         true,
     );
-    $response = $renderer->response(['text' => 'numbers', 'arr' => [1, 2, 3]], 'renderer');
+    $result = $renderer->render('renderer', ['text' => 'numbers', 'arr' => [1, 2, 3]]);
 
-    expect((string)$response->getBody())->toBe("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>");
+    expect($result)->toBe("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>");
 });
 
 test('Whitelisting', function () {
@@ -53,59 +45,24 @@ test('Whitelisting', function () {
         [Whitelisted::class],
         true,
     );
-    $response = $renderer->response(['wl' => new Whitelisted(), 'content' => 'test'], 'whitelist');
+    $result = $renderer->render('whitelist', ['wl' => new Whitelisted(), 'content' => 'test']);
 
-    expect((string)$response->getBody())->toBe('<h1>headline</h1><p>test</p>');
+    expect($result)->toBe('<h1>headline</h1><p>test</p>');
 });
 
-test('Change content-type (named parameter)', function () {
-    $renderer = new Renderer($this->factory(), $this->templates(), [], [], true);
-    $response = $renderer->response([], 'plain', contentType: 'application/xhtml+xml');
 
-    $hasContentType = false;
-    foreach ($response->getHeaders() as $key => $value) {
-        if ($key === 'Content-Type' && $value[0] === 'application/xhtml+xml') {
-            $hasContentType = true;
-        }
-    }
+test('Content type', function () {
+    $renderer = new Renderer($this->factory(), $this->templates());
+    expect($renderer->contentType())->toBe('text/html');
 
-    expect($hasContentType)->toBe(true);
-    expect((string)$response->getBody())->toBe("<p>plain</p>\n");
-});
-
-test('Iterator', function () {
-    // Pass iterator
-    $iter = function () {
-        yield 'text' => 'characters';
-
-        yield 'arr' => ['a', 'b', 'c'];
-    };
-    $renderer = new Renderer(
-        $this->factory(),
-        $this->templates(),
-        ['config' => new Config('boiler')],
-        [],
-        true,
-    );
-    $response = $renderer->response($iter(), 'renderer');
-
-    expect((string)$response->getBody())->toBe("<h1>boiler</h1>\n<p>characters</p><p>a</p><p>b</p><p>c</p>");
+    $renderer = new Renderer($this->factory(), $this->templates(), contentType: 'text/xhtml');
+    expect($renderer->contentType())->toBe('text/xhtml');
 });
 
 test('Template missing', function () {
-    (new Renderer($this->factory(), $this->templates()))->response([], 'missing');
+    (new Renderer($this->factory(), $this->templates()))->render('missing', []);
 })->throws(LookupException::class);
 
 test('Template dirs missing', function () {
-    (new Renderer($this->factory(), []))->response([], 'renderer');
-})->throws(RendererException::class);
-
-test('Wrong context', function () {
-    $renderer = new Renderer($this->factory(), $this->templates());
-    $renderer->response(new stdClass(), 'renderer');
-})->throws(RendererException::class);
-
-test('No template given', function () {
-    $renderer = new Renderer($this->factory(), $this->templates());
-    $renderer->response([]);
+    (new Renderer($this->factory(), []))->render( 'renderer', []);
 })->throws(RendererException::class);

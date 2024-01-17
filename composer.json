@@ -1,6 +1,6 @@
 {
-    "name": "conia/chuck-boiler",
-    "description": "Boiler templates for Chuck framework",
+    "name": "conia/cms-boiler",
+    "description": "Boiler templates for Conia CMS",
     "type": "library",
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -12,22 +12,22 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://conia.dev/chuck-boiler",
+    "homepage": "https://conia.dev/cms-boiler",
     "keywords": [
         "conia",
+        "cms",
         "templating",
         "templates",
-        "boiler",
-        "chuck"
+        "boiler"
     ],
     "autoload": {
         "psr-4": {
-            "Conia\\Renderer\\Boiler\\": "src/"
+            "Conia\\Cms\\Boiler\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Conia\\Renderer\\Boiler\\Tests\\": "tests"
+            "Conia\\Cms\\Boiler\\Tests\\": "tests"
         }
     },
     "require": {
@@ -35,7 +35,7 @@
         "conia/boiler": "dev-main"
     },
     "require-dev": {
-        "conia/chuck": "dev-main",
+        "conia/cms": "@dev",
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "nyholm/psr7": "^1.5",
         "nyholm/psr7-server": "^1",
@@ -43,6 +43,20 @@
         "staabm/annotate-pull-request-from-checkstyle": "^1.8",
         "vimeo/psalm": "^5.7"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../conia/cms"
+        },
+        {
+            "type": "path",
+            "url": "../../conia/route"
+        },
+        {
+            "type": "path",
+            "url": "../../conia/core"
+        }
+    ],
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true,
