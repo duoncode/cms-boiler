@@ -3,66 +3,76 @@
 declare(strict_types=1);
 
 use Conia\Boiler\Exception\LookupException;
-use Conia\Core\Config;
 use Conia\Cms\Boiler\Renderer;
 use Conia\Cms\Boiler\RendererException;
 use Conia\Cms\Boiler\Tests\TestCase;
 use Conia\Cms\Boiler\Tests\Whitelisted;
+use Conia\Core\Config;
 
-uses(TestCase::class);
+class RendererTest extends TestCase
+{
+    public function testHtmlArrayOfTemplateDirs(): void
+    {
+        $renderer = new Renderer(
+            $this->factory(),
+            $this->templates(),
+            ['config' => new Config('boiler')],
+            [],
+            true,
+        );
+        $result = $renderer->render('renderer', ['text' => 'numbers', 'arr' => [1, 2, 3]]);
 
-test('Html (array of template dirs)', function () {
-    $renderer = new Renderer(
-        $this->factory(),
-        $this->templates(),
-        ['config' => new Config('boiler')],
-        [],
-        true,
-    );
-    $result = $renderer->render('renderer', ['text' => 'numbers', 'arr' => [1, 2, 3]]);
+        $this->assertEquals("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>", $result);
+    }
 
-    expect($result)->toBe("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>");
-});
+    public function testHtmlTemplateDirAsString(): void
+    {
+        $renderer = new Renderer(
+            $this->factory(),
+            TestCase::TEMPLATES,
+            ['config' => new Config('boiler')],
+            [],
+            true,
+        );
+        $result = $renderer->render('renderer', ['text' => 'numbers', 'arr' => [1, 2, 3]]);
 
-test('Html (template dir as string)', function () {
-    $renderer = new Renderer(
-        $this->factory(),
-        TestCase::TEMPLATES,
-        ['config' => new Config('boiler')],
-        [],
-        true,
-    );
-    $result = $renderer->render('renderer', ['text' => 'numbers', 'arr' => [1, 2, 3]]);
+        $this->assertEquals("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>", $result);
+    }
 
-    expect($result)->toBe("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>");
-});
+    public function testWhitelisting(): void
+    {
+        $renderer = new Renderer(
+            $this->factory(),
+            $this->templates(),
+            [],
+            [Whitelisted::class],
+            true,
+        );
+        $result = $renderer->render('whitelist', ['wl' => new Whitelisted(), 'content' => 'test']);
 
-test('Whitelisting', function () {
-    $renderer = new Renderer(
-        $this->factory(),
-        $this->templates(),
-        [],
-        [Whitelisted::class],
-        true,
-    );
-    $result = $renderer->render('whitelist', ['wl' => new Whitelisted(), 'content' => 'test']);
+        $this->assertEquals('<h1>headline</h1><p>test</p>', $result);
+    }
 
-    expect($result)->toBe('<h1>headline</h1><p>test</p>');
-});
+    public function testContentType(): void
+    {
+        $renderer = new Renderer($this->factory(), $this->templates());
+        $this->assertEquals('text/html', $renderer->contentType());
 
+        $renderer = new Renderer($this->factory(), $this->templates(), contentType: 'text/xhtml');
+        $this->assertEquals('text/xhtml', $renderer->contentType());
+    }
 
-test('Content type', function () {
-    $renderer = new Renderer($this->factory(), $this->templates());
-    expect($renderer->contentType())->toBe('text/html');
+    public function testTemplateMissing(): void
+    {
+        $this->throws(LookupException::class);
 
-    $renderer = new Renderer($this->factory(), $this->templates(), contentType: 'text/xhtml');
-    expect($renderer->contentType())->toBe('text/xhtml');
-});
+        (new Renderer($this->factory(), $this->templates()))->render('missing', []);
+    }
 
-test('Template missing', function () {
-    (new Renderer($this->factory(), $this->templates()))->render('missing', []);
-})->throws(LookupException::class);
+    public function testTemplateDirsMissing(): void
+    {
+        $this->throws(RendererException::class);
 
-test('Template dirs missing', function () {
-    (new Renderer($this->factory(), []))->render( 'renderer', []);
-})->throws(RendererException::class);
+        (new Renderer($this->factory(), []))->render('renderer', []);
+    }
+}

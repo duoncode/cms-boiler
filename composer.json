@@ -36,10 +36,12 @@
     },
     "require-dev": {
         "conia/cms": "@dev",
+        "conia/development": "^1.0",
+        "ernst/coverlyzer": "^0.1.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "nyholm/psr7": "^1.5",
         "nyholm/psr7-server": "^1",
-        "pestphp/pest": "^1.21",
+        "phpunit/phpunit": "^10.4",
         "staabm/annotate-pull-request-from-checkstyle": "^1.8",
         "vimeo/psalm": "^5.7"
     },
@@ -50,16 +52,11 @@
         },
         {
             "type": "path",
-            "url": "../../conia/route"
-        },
-        {
-            "type": "path",
             "url": "../../conia/core"
         }
     ],
     "config": {
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }

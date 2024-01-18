@@ -16,9 +16,13 @@ class TestCase extends BaseTestCase
 {
     public const TEMPLATES = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
 
-    public function __construct(?string $name = null, array $data = [], $dataName = '')
+    public function throws(string $exception, string $message = null): void
     {
-        parent::__construct($name, $data, $dataName);
+        $this->expectException($exception);
+
+        if ($message) {
+            $this->expectExceptionMessage($message);
+        }
     }
 
     public function factory(): Nyholm
