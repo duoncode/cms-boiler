@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conia\Cms\Boiler\Tests;
+
 use Conia\Boiler\Exception\LookupException;
 use Conia\Cms\Boiler\Renderer;
 use Conia\Cms\Boiler\RendererException;

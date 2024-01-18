@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Conia\Cms\Boiler;
 
 use Conia\Boiler\Engine;
-use Conia\Core\Factory;
 use Conia\Cms\Renderer as RendererInterface;
+use Conia\Core\Factory;
 
 /**
  * @psalm-api
@@ -16,8 +16,8 @@ use Conia\Cms\Renderer as RendererInterface;
 class Renderer implements RendererInterface
 {
     /**
-     * @psalm-param DirsInput $dirs
-     * @psalm-param list<class-string> $whitelist
+     * @param DirsInput $dirs
+     * @param list<class-string> $whitelist
      */
     public function __construct(
         protected Factory $factory,
@@ -29,11 +29,12 @@ class Renderer implements RendererInterface
     ) {
     }
 
+    /** @param non-empty-string $id */
     public function render(string $id, array $context): string
     {
-        $dirs = (array)$this->dirs;
+        $dirs = $this->dirs;
 
-        if (count($dirs) === 0) {
+        if (count((array)$dirs) === 0) {
             throw new RendererException('Provide at least one template directory');
         }
 
@@ -42,8 +43,8 @@ class Renderer implements RendererInterface
         return $engine->render($id, $context);
     }
 
-    /** @psalm-param DirsInput $dirs */
-    protected function createEngine(array $dirs): Engine
+    /** @param DirsInput $dirs */
+    protected function createEngine(string|array $dirs): Engine
     {
         return new Engine($dirs, $this->defaults, $this->whitelist, $this->autoescape);
     }
