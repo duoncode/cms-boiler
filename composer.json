@@ -35,7 +35,7 @@
         "conia/boiler": "dev-main"
     },
     "require-dev": {
-        "conia/cms": "@dev",
+        "conia/cms": "dev-main",
         "conia/development": "^1.0",
         "ernst/coverlyzer": "^0.1.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -45,16 +45,6 @@
         "staabm/annotate-pull-request-from-checkstyle": "^1.8",
         "vimeo/psalm": "^5.7"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../../conia/cms"
-        },
-        {
-            "type": "path",
-            "url": "../../conia/core"
-        }
-    ],
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
