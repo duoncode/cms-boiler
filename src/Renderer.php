@@ -6,7 +6,6 @@ namespace Conia\Cms\Boiler;
 
 use Conia\Boiler\Engine;
 use Conia\Cms\Renderer as RendererInterface;
-use Conia\Core\Factory;
 
 /**
  * @psalm-api
@@ -20,7 +19,6 @@ class Renderer implements RendererInterface
      * @param list<class-string> $whitelist
      */
     public function __construct(
-        protected Factory $factory,
         protected string|array $dirs,
         protected array $defaults = [],
         protected array $whitelist = [],

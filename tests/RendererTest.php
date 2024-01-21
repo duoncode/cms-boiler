@@ -9,14 +9,13 @@ use Conia\Cms\Boiler\Renderer;
 use Conia\Cms\Boiler\RendererException;
 use Conia\Cms\Boiler\Tests\TestCase;
 use Conia\Cms\Boiler\Tests\Whitelisted;
-use Conia\Core\Config;
+use Conia\Cms\Config;
 
 class RendererTest extends TestCase
 {
     public function testHtmlArrayOfTemplateDirs(): void
     {
         $renderer = new Renderer(
-            $this->factory(),
             $this->templates(),
             ['config' => new Config('boiler')],
             [],
@@ -30,7 +29,6 @@ class RendererTest extends TestCase
     public function testHtmlTemplateDirAsString(): void
     {
         $renderer = new Renderer(
-            $this->factory(),
             TestCase::TEMPLATES,
             ['config' => new Config('boiler')],
             [],
@@ -44,7 +42,6 @@ class RendererTest extends TestCase
     public function testWhitelisting(): void
     {
         $renderer = new Renderer(
-            $this->factory(),
             $this->templates(),
             [],
             [Whitelisted::class],
@@ -57,10 +54,10 @@ class RendererTest extends TestCase
 
     public function testContentType(): void
     {
-        $renderer = new Renderer($this->factory(), $this->templates());
+        $renderer = new Renderer($this->templates());
         $this->assertEquals('text/html', $renderer->contentType());
 
-        $renderer = new Renderer($this->factory(), $this->templates(), contentType: 'text/xhtml');
+        $renderer = new Renderer($this->templates(), contentType: 'text/xhtml');
         $this->assertEquals('text/xhtml', $renderer->contentType());
     }
 
@@ -68,13 +65,13 @@ class RendererTest extends TestCase
     {
         $this->throws(LookupException::class);
 
-        (new Renderer($this->factory(), $this->templates()))->render('missing', []);
+        (new Renderer($this->templates()))->render('missing', []);
     }
 
     public function testTemplateDirsMissing(): void
     {
         $this->throws(RendererException::class);
 
-        (new Renderer($this->factory(), []))->render('renderer', []);
+        (new Renderer([]))->render('renderer', []);
     }
 }
