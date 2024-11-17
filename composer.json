@@ -1,53 +1,53 @@
 {
-    "name": "conia/cms-boiler",
-    "description": "Boiler templates for Conia CMS",
-    "type": "library",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "ebene fünf GmbH",
-            "email": "conia@ebenefuenf.de",
-            "role": "Developer"
-        }
-    ],
-    "homepage": "https://conia.dev/cms-boiler",
-    "keywords": [
-        "conia",
-        "cms",
-        "templating",
-        "templates",
-        "boiler"
-    ],
-    "autoload": {
-        "psr-4": {
-            "Conia\\Cms\\Boiler\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Conia\\Cms\\Boiler\\Tests\\": "tests"
-        }
-    },
-    "require": {
-        "php": ">=8.1",
-        "conia/boiler": "dev-main"
-    },
-    "require-dev": {
-        "conia/cms": "dev-main",
-        "conia/development": "^1.0",
-        "ernst/coverlyzer": "^0.1.1",
-        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-        "nyholm/psr7": "^1.5",
-        "nyholm/psr7-server": "^1",
-        "phpunit/phpunit": "^10.4",
-        "staabm/annotate-pull-request-from-checkstyle": "^1.8",
-        "vimeo/psalm": "^5.7"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    }
+	"name": "fiveorbs/cms-boiler",
+	"description": "Boiler templates for FiveOrbs CMS",
+	"type": "library",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "ebene fünf GmbH",
+			"email": "fiveorbs@ebenefuenf.de",
+			"role": "Developer"
+		}
+	],
+	"homepage": "https://fiveorbs.dev/cms-boiler",
+	"keywords": [
+		"fiveorbs",
+		"cms",
+		"templating",
+		"templates",
+		"boiler"
+	],
+	"autoload": {
+		"psr-4": {
+			"FiveOrbs\\Cms\\Boiler\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"FiveOrbs\\Cms\\Boiler\\Tests\\": "tests"
+		}
+	},
+	"require": {
+		"php": ">=8.1",
+		"fiveorbs/boiler": "dev-main"
+	},
+	"require-dev": {
+		"fiveorbs/cms": "dev-main",
+		"fiveorbs/dev": "^1.1",
+		"ernst/coverlyzer": "^0.1.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"nyholm/psr7": "^1.5",
+		"nyholm/psr7-server": "^1",
+		"phpunit/phpunit": "^10.4",
+		"staabm/annotate-pull-request-from-checkstyle": "^1.8",
+		"vimeo/psalm": "^5.7"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }
