@@ -1,4 +1,4 @@
-<h1><?php echo $config->app(); ?></h1>
-<p><?php echo $text; ?></p><?php foreach ($arr as $num) {
-    ?><p><?php echo $num; ?></p><?php
+<h1><?= $config->app(); ?></h1>
+<p><?= $text; ?></p><?php foreach ($arr as $num) {
+	?><p><?= $num; ?></p><?php
 } ?>

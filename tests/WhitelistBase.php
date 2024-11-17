@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Conia\Cms\Boiler\Tests;
+namespace FiveOrbs\Cms\Boiler\Tests;
 
-class WhitelistBase
-{
-}
+class WhitelistBase {}

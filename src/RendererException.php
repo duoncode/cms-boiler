@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Conia\Cms\Boiler;
+namespace FiveOrbs\Cms\Boiler;
 
 use RuntimeException;
 
-class RendererException extends RuntimeException
-{
-}
+class RendererException extends RuntimeException {}
