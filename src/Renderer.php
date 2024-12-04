@@ -43,7 +43,7 @@ class Renderer implements RendererInterface
 	/** @param DirsInput $dirs */
 	protected function createEngine(string|array $dirs): Engine
 	{
-		return new Engine($dirs, $this->defaults, $this->whitelist, $this->autoescape);
+		return new Engine($dirs, $this->autoescape, $this->defaults, $this->whitelist);
 	}
 
 	public function contentType(): string
