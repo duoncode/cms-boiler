@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace FiveOrbs\Cms\Boiler\Tests;
+namespace Duon\Cms\Boiler\Tests;
 
-use FiveOrbs\Boiler\Exception\LookupException;
-use FiveOrbs\Cms\Boiler\Renderer;
-use FiveOrbs\Cms\Boiler\RendererException;
-use FiveOrbs\Cms\Boiler\Tests\TestCase;
-use FiveOrbs\Cms\Boiler\Tests\Whitelisted;
-use FiveOrbs\Cms\Config;
+use Duon\Boiler\Exception\LookupException;
+use Duon\Cms\Boiler\Renderer;
+use Duon\Cms\Boiler\RendererException;
+use Duon\Cms\Boiler\Tests\TestCase;
+use Duon\Cms\Boiler\Tests\Whitelisted;
+use Duon\Cms\Config;
 
 class RendererTest extends TestCase
 {

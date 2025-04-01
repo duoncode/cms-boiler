@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FiveOrbs\Cms\Boiler\Tests;
+namespace Duon\Cms\Boiler\Tests;
 
-use FiveOrbs\Core\Factory\Nyholm;
+use Duon\Core\Factory\Nyholm;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**

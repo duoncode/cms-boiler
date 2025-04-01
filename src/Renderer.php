@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace FiveOrbs\Cms\Boiler;
+namespace Duon\Cms\Boiler;
 
-use FiveOrbs\Boiler\Engine;
-use FiveOrbs\Cms\Renderer as RendererInterface;
+use Duon\Boiler\Engine;
+use Duon\Cms\Renderer as RendererInterface;
 
 /**
  * @psalm-api
  *
- * @psalm-import-type DirsInput from \FiveOrbs\Boiler\Engine
+ * @psalm-import-type DirsInput from \Duon\Boiler\Engine
  */
 class Renderer implements RendererInterface
 {

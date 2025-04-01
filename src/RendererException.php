@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FiveOrbs\Cms\Boiler;
+namespace Duon\Cms\Boiler;
 
 use RuntimeException;
 

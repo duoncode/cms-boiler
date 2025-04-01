@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FiveOrbs\Cms\Boiler\Tests;
+namespace Duon\Cms\Boiler\Tests;
 
 class Whitelisted extends WhitelistBase
 {
