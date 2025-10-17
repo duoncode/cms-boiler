@@ -37,13 +37,15 @@
 	"require-dev": {
 		"duon/cms": "dev-main",
 		"duon/dev": "^1.1",
+		"duon/log": "dev-main",
 		"ernst/coverlyzer": "^0.2",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"nyholm/psr7": "^1.5",
 		"nyholm/psr7-server": "^1",
 		"phpunit/phpunit": "^12.0",
 		"staabm/annotate-pull-request-from-checkstyle": "^1.8",
-		"vimeo/psalm": "^6.10"
+		"vimeo/psalm": "^6.10",
+		"filp/whoops": "^2.15"
 	},
 	"config": {
 		"allow-plugins": {
