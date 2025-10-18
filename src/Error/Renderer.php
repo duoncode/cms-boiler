@@ -59,7 +59,7 @@ class Renderer implements RendererInterface
 		// Split the Accept header into individual media types
 		$acceptedTypes = array_map('trim', explode(',', $request->getHeaderLine('Accept')));
 
-		if (!empty($acceptHeader)) {
+		if (!empty($acceptedTypes)) {
 			foreach ($acceptedTypes as $type) {
 				// Remove quality values if present
 				$mediaType = trim(explode(';', $type)[0]);
