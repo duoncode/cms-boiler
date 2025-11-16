@@ -33,7 +33,10 @@ class Renderer implements RendererInterface
 		}
 		$dirs = $this->dirs;
 		$engine = $this->createEngine($dirs);
-		$response = $factory->createResponse($exception->getCode());
+
+		$code = $exception->getCode();
+		$status = $code < 100 || $code > 599 ? 500 : $code;
+		$response = $factory->createResponse($status);
 
 		if ($request && $this->isJsonOnlyRequest($request)) {
 			$response = $response->withHeader('Content-Type', 'application/json');
