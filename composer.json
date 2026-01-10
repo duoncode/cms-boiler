@@ -36,7 +36,7 @@
 	},
 	"require-dev": {
 		"duon/cms": "dev-main",
-		"duon/dev": "^1.1",
+		"duon/dev": "dev-main",
 		"duon/log": "dev-main",
 		"ernst/coverlyzer": "^0.2",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
