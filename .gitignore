@@ -8,3 +8,7 @@ composer.lock
 /site
 /tmp
 /vendor
+
+# Local config overrides (not committed)
+/phpunit.xml
+/psalm.xml
