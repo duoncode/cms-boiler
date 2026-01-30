@@ -2,17 +2,14 @@
 	"name": "duon/cms-boiler",
 	"description": "Boiler templates for Duon CMS",
 	"type": "library",
-	"minimum-stability": "dev",
-	"prefer-stable": true,
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "ebene fünf GmbH",
-			"email": "duon@ebenefuenf.de",
-			"role": "Developer"
+			"name": "Thomas Ernst",
+			"email": "duon@ebenefuenf.de"
 		}
 	],
-	"homepage": "https://duon.dev/cms-boiler",
+	"homepage": "https://duon.run/cms-boiler",
 	"keywords": [
 		"duon",
 		"cms",
@@ -31,25 +28,15 @@
 		}
 	},
 	"require": {
-		"php": ">=8.1",
-		"duon/boiler": "dev-main"
+		"php": "^8.5",
+		"duon/boiler": "^0.1"
 	},
 	"require-dev": {
-		"duon/cms": "dev-main",
-		"duon/dev": "dev-main",
-		"duon/log": "dev-main",
-		"ernst/coverlyzer": "^0.2",
-		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"duon/cms": "^0.1",
+		"duon/dev": "^2.5",
+		"duon/log": "^0.1",
 		"nyholm/psr7": "^1.5",
 		"nyholm/psr7-server": "^1",
-		"phpunit/phpunit": "^12.0",
-		"staabm/annotate-pull-request-from-checkstyle": "^1.8",
-		"vimeo/psalm": "^6.10",
 		"filp/whoops": "^2.15"
-	},
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
 	}
 }
