@@ -1,8 +1,8 @@
 # Duon CMS Boiler Renderer
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
-[![Psalm coverage](https://shepherd.dev/github/duoncode/cms-boiler/coverage.svg?)](https://shepherd.dev/github/duoncode/cms-boiler)
-[![Psalm level](https://shepherd.dev/github/duoncode/cms-boiler/level.svg?)](https://duoncode.dev/cms-boiler)
+[![Psalm coverage](https://shepherd.dev/github/duonrun/cms-boiler/coverage.svg?)](https://shepherd.dev/github/duonrun/cms-boiler)
+[![Psalm level](https://shepherd.dev/github/duonrun/cms-boiler/level.svg?)](https://duonrun.dev/cms-boiler)
 
 Allows to use [Boiler](https://duon.sh/boiler) templates in the [Duon CMS](https://duon.sh/cms).
 
