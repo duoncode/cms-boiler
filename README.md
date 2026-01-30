@@ -22,3 +22,7 @@ $cms->renderer('template', Renderer::class)->args(function () {
 $app = App::create();
 $app->load($cms);
 ```
+
+## License
+
+This project is licensed under the [MIT license](LICENSE.md).
