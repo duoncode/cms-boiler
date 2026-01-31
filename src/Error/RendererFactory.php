@@ -6,8 +6,16 @@ namespace Duon\Cms\Boiler\Error;
 
 use Duon\Error\Renderer as RendererInterface;
 
+/**
+ * @psalm-import-type DirsInput from \Duon\Boiler\Engine
+ */
 final class RendererFactory
 {
+	/**
+	 * @param DirsInput $dirs
+	 * @param array<string, mixed> $context
+	 * @param list<class-string> $whitelist
+	 */
 	public function __construct(
 		private string|array $dirs,
 		private array $context = [],
@@ -15,6 +23,7 @@ final class RendererFactory
 		private bool $autoescape = true,
 	) {}
 
+	/** @param non-empty-string $template */
 	public function withTemplate(string $template): RendererInterface
 	{
 		return new Renderer(
