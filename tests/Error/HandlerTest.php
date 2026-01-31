@@ -56,6 +56,9 @@ class HandlerTest extends TestCase
 	#[RunInSeparateProcess]
 	public function testCreateReturnsErrorHandler(): void
 	{
+		$_ENV['CMS_DEBUG'] = false;
+		$_ENV['CMS_ENV'] = 'test';
+
 		$handler = new Handler(
 			root: __DIR__ . '/../',
 			logger: new NullLogger(),
@@ -72,6 +75,7 @@ class HandlerTest extends TestCase
 	public function testCreateWithDebugMode(): void
 	{
 		$_ENV['CMS_DEBUG'] = true;
+		$_ENV['CMS_ENV'] = 'test';
 
 		$handler = new Handler(
 			root: __DIR__ . '/../',
