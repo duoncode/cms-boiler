@@ -64,7 +64,7 @@ final class Handler
 			],
 			whitelist: $this->whitelist,
 		);
-		$handler = new ErrorHandler($this->factory->responseFactory(), env('CMS_DEBUG'));
+		$handler = new ErrorHandler($this->factory->responseFactory(), (bool) env('CMS_DEBUG'));
 		$handler->logger($this->logger);
 		$handler->renderer($rendererFactory->withTemplate('http-error'), HttpError::class);
 		$handler->renderer($rendererFactory->withTemplate('http-server-error'));
