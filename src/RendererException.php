@@ -6,4 +6,4 @@ namespace Duon\Cms\Boiler;
 
 use RuntimeException;
 
-class RendererException extends RuntimeException {}
+final class RendererException extends RuntimeException {}

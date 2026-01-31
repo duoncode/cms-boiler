@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Throwable;
 
-class WhoopsHandler implements DebugHandler
+final class WhoopsHandler implements DebugHandler
 {
 	public function handle(Throwable $exception, ResponseFactory $factory): Response
 	{

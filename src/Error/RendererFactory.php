@@ -6,13 +6,13 @@ namespace Duon\Cms\Boiler\Error;
 
 use Duon\Error\Renderer as RendererInterface;
 
-class RendererFactory
+final class RendererFactory
 {
 	public function __construct(
-		protected string|array $dirs,
-		protected array $context = [],
-		protected array $whitelist = [],
-		protected bool $autoescape = true,
+		private string|array $dirs,
+		private array $context = [],
+		private array $whitelist = [],
+		private bool $autoescape = true,
 	) {}
 
 	public function withTemplate(string $template): RendererInterface

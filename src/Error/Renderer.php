@@ -12,15 +12,15 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Throwable;
 
-class Renderer implements RendererInterface
+final class Renderer implements RendererInterface
 {
 	public function __construct(
-		protected string $template,
-		protected string|array $dirs,
-		protected array $context = [],
-		protected array $whitelist = [],
-		protected bool $autoescape = true,
-		protected string $contentType = 'text/html',
+		private string $template,
+		private string|array $dirs,
+		private array $context = [],
+		private array $whitelist = [],
+		private bool $autoescape = true,
+		private string $contentType = 'text/html',
 	) {}
 
 	public function render(Throwable $exception, ResponseFactory $factory, ?Request $request, bool $debug): Response
@@ -52,12 +52,12 @@ class Renderer implements RendererInterface
 		return $response;
 	}
 
-	protected function createEngine(string|array $dirs): Engine
+	private function createEngine(string|array $dirs): Engine
 	{
 		return new Engine($dirs, $this->autoescape, [], $this->whitelist);
 	}
 
-	protected function isJsonOnlyRequest(Request $request): bool
+	private function isJsonOnlyRequest(Request $request): bool
 	{
 		// Split the Accept header into individual media types
 		$acceptedTypes = array_map('trim', explode(',', $request->getHeaderLine('Accept')));
