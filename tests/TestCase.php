@@ -16,7 +16,7 @@ class TestCase extends BaseTestCase
 {
 	public const TEMPLATES = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
 
-	public function throws(string $exception, string $message = null): void
+	public function throws(string $exception, ?string $message = null): void
 	{
 		$this->expectException($exception);
 
