@@ -39,6 +39,7 @@ final class Renderer implements RendererInterface
 		$payload = null;
 
 		if ($exception instanceof HttpError) {
+			/** @var array<string, mixed>|null */
 			$payload = $exception->payload();
 			$request = $exception->request() ?: $request;
 		}
@@ -51,7 +52,8 @@ final class Renderer implements RendererInterface
 
 		if ($request && $this->isJsonOnlyRequest($request)) {
 			$response = $response->withHeader('Content-Type', 'application/json');
-			$response->getBody()->write(json_encode($payload) ?: '{}');
+			$json = json_encode($payload);
+			$response->getBody()->write($json === false ? '{}' : $json);
 		} else {
 			$response->getBody()->write($engine->render($this->template, array_merge($this->context, [
 				'request' => $request,
