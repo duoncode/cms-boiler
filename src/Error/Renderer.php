@@ -13,8 +13,17 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Throwable;
 
+/**
+ * @psalm-import-type DirsInput from \Duon\Boiler\Engine
+ */
 final class Renderer implements RendererInterface
 {
+	/**
+	 * @param non-empty-string $template
+	 * @param DirsInput $dirs
+	 * @param array<string, mixed> $context
+	 * @param list<class-string> $whitelist
+	 */
 	public function __construct(
 		private string $template,
 		private string|array $dirs,
@@ -54,6 +63,7 @@ final class Renderer implements RendererInterface
 		return $response;
 	}
 
+	/** @param DirsInput $dirs */
 	private function createEngine(string|array $dirs): Engine
 	{
 		return new Engine($dirs, $this->autoescape, [], $this->whitelist);
