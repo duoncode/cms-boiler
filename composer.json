@@ -32,7 +32,7 @@
 		"duon/boiler": "^0.1"
 	},
 	"require-dev": {
-		"duon/cms": "^0.1",
+		"duon/cms": "dev-main",
 		"duon/dev": "^2.5",
 		"duon/log": "^0.1",
 		"nyholm/psr7": "^1.5",
