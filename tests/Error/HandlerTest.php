@@ -7,7 +7,7 @@ namespace Duon\Cms\Boiler\Tests\Error;
 use Duon\Cms\Boiler\Error\Handler;
 use Duon\Cms\Boiler\Tests\TestCase;
 use Duon\Error\Handler as ErrorHandler;
-use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use Psr\Log\NullLogger;
 
 class HandlerTest extends TestCase
@@ -51,5 +51,37 @@ class HandlerTest extends TestCase
 		$result = $handler->whitelist([self::class], replace: true);
 
 		$this->assertSame($handler, $result);
+	}
+
+	#[RunInSeparateProcess]
+	public function testCreateReturnsErrorHandler(): void
+	{
+		$handler = new Handler(
+			root: __DIR__ . '/../',
+			logger: new NullLogger(),
+			factory: $this->factory(),
+		);
+
+		$handler->views('templates');
+		$errorHandler = $handler->create();
+
+		$this->assertInstanceOf(ErrorHandler::class, $errorHandler);
+	}
+
+	#[RunInSeparateProcess]
+	public function testCreateWithDebugMode(): void
+	{
+		$_ENV['CMS_DEBUG'] = true;
+
+		$handler = new Handler(
+			root: __DIR__ . '/../',
+			logger: new NullLogger(),
+			factory: $this->factory(),
+		);
+
+		$handler->views('templates');
+		$errorHandler = $handler->create();
+
+		$this->assertInstanceOf(ErrorHandler::class, $errorHandler);
 	}
 }
