@@ -6,6 +6,7 @@ namespace Duon\Cms\Boiler;
 
 use Duon\Boiler\Engine;
 use Duon\Cms\Renderer as RendererInterface;
+use Override;
 
 /**
  * @psalm-api
@@ -27,6 +28,7 @@ class Renderer implements RendererInterface
 	) {}
 
 	/** @param non-empty-string $id */
+	#[Override]
 	public function render(string $id, array $context): string
 	{
 		$dirs = $this->dirs;
@@ -46,6 +48,7 @@ class Renderer implements RendererInterface
 		return new Engine($dirs, $this->autoescape, $this->defaults, $this->whitelist);
 	}
 
+	#[Override]
 	public function contentType(): string
 	{
 		return $this->contentType;

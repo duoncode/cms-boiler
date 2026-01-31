@@ -7,6 +7,7 @@ namespace Duon\Cms\Boiler\Error;
 use Duon\Boiler\Engine;
 use Duon\Core\Exception\HttpError;
 use Duon\Error\Renderer as RendererInterface;
+use Override;
 use Psr\Http\Message\ResponseFactoryInterface as ResponseFactory;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -23,6 +24,7 @@ final class Renderer implements RendererInterface
 		private string $contentType = 'text/html',
 	) {}
 
+	#[Override]
 	public function render(Throwable $exception, ResponseFactory $factory, ?Request $request, bool $debug): Response
 	{
 		$payload = null;
