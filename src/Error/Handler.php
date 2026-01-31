@@ -17,6 +17,7 @@ use Psr\Log\LoggerInterface as Logger;
 
 use function Duon\Core\env;
 
+/** @psalm-api */
 final class Handler
 {
 	private string $views;
