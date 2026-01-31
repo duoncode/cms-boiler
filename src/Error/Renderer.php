@@ -36,7 +36,7 @@ final class Renderer implements RendererInterface
 		$dirs = $this->dirs;
 		$engine = $this->createEngine($dirs);
 
-		$code = $exception->getCode();
+		$code = (int) $exception->getCode();
 		$status = $code < 100 || $code > 599 ? 500 : $code;
 		$response = $factory->createResponse($status);
 
