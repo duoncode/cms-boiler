@@ -26,6 +26,7 @@ final class Renderer implements RendererInterface
 	#[Override]
 	public function render(Throwable $exception, ResponseFactory $factory, ?Request $request, bool $debug): Response
 	{
+		/** @var array<string, mixed>|null $payload */
 		$payload = null;
 
 		if ($exception instanceof HttpError) {
