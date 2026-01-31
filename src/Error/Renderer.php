@@ -42,7 +42,7 @@ final class Renderer implements RendererInterface
 
 		if ($request && $this->isJsonOnlyRequest($request)) {
 			$response = $response->withHeader('Content-Type', 'application/json');
-			$response->getBody()->write(json_encode($payload) ?? '{}');
+			$response->getBody()->write(json_encode($payload) ?: '{}');
 		} else {
 			$response->getBody()->write($engine->render($this->template, array_merge($this->context, [
 				'request' => $request,
