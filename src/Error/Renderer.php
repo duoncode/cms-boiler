@@ -21,7 +21,6 @@ final class Renderer implements RendererInterface
 		private array $context = [],
 		private array $whitelist = [],
 		private bool $autoescape = true,
-		private string $contentType = 'text/html',
 	) {}
 
 	#[Override]
