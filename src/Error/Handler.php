@@ -20,7 +20,10 @@ use function Duon\Core\env;
 /** @psalm-api */
 final class Handler
 {
+	/** @var non-empty-string */
 	private string $views;
+
+	/** @var list<class-string> */
 	private array $whitelist = [
 		Node::class,
 		Finder::class,
@@ -30,11 +33,13 @@ final class Handler
 		Request::class,
 	];
 
+	/** @param non-empty-string $root */
 	public function __construct(private string $root, private Logger $logger, private Factory $factory)
 	{
 		$this->views = "{$this->root}/views";
 	}
 
+	/** @param non-empty-string $views */
 	public function views(string $views): self
 	{
 		$this->views = "{$this->root}/{$views}";
@@ -42,6 +47,7 @@ final class Handler
 		return $this;
 	}
 
+	/** @param list<class-string> $whitelist */
 	public function whitelist(array $whitelist, bool $replace = false): self
 	{
 		if ($replace) {
