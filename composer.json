@@ -29,7 +29,7 @@
 	},
 	"require": {
 		"php": "^8.5",
-		"duon/boiler": "^0.1"
+		"duon/boiler": "^0.1 || ^0.2"
 	},
 	"require-dev": {
 		"duon/cms": "dev-main",
