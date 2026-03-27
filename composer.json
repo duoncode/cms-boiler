@@ -33,7 +33,7 @@
 	},
 	"require-dev": {
 		"duon/cms": "dev-main",
-		"duon/dev": "^2.5",
+		"duon/dev": "^2.5 || ^3.0",
 		"duon/log": "^0.1",
 		"nyholm/psr7": "^1.5",
 		"nyholm/psr7-server": "^1",
