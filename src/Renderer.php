@@ -45,7 +45,9 @@ class Renderer implements RendererInterface
 	/** @param DirsInput $dirs */
 	protected function createEngine(string|array $dirs): Engine
 	{
-		return new Engine($dirs, $this->autoescape, $this->defaults, $this->whitelist);
+		return $this->autoescape
+			? Engine::create($dirs, $this->defaults, $this->whitelist)
+			: Engine::unescaped($dirs, $this->defaults, $this->whitelist);
 	}
 
 	#[Override]
