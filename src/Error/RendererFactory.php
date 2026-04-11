@@ -14,12 +14,12 @@ final class RendererFactory
 	/**
 	 * @param DirsInput $dirs
 	 * @param array<string, mixed> $context
-	 * @param list<class-string> $whitelist
+	 * @param list<class-string> $trusted
 	 */
 	public function __construct(
 		private string|array $dirs,
 		private array $context = [],
-		private array $whitelist = [],
+		private array $trusted = [],
 		private bool $autoescape = true,
 	) {}
 
@@ -30,7 +30,7 @@ final class RendererFactory
 			$template,
 			$this->dirs,
 			$this->context,
-			$this->whitelist,
+			$this->trusted,
 			$this->autoescape,
 		);
 	}

@@ -39,7 +39,7 @@ class RendererTest extends TestCase
 		$this->assertEquals("<h1>boiler</h1>\n<p>numbers</p><p>1</p><p>2</p><p>3</p>", $result);
 	}
 
-	public function testWhitelisting(): void
+	public function testTrustedClasses(): void
 	{
 		$renderer = new Renderer(
 			$this->templates(),

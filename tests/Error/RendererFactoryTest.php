@@ -15,7 +15,7 @@ class RendererFactoryTest extends TestCase
 		$factory = new RendererFactory(
 			dirs: $this->templates(),
 			context: ['foo' => 'bar'],
-			whitelist: [],
+			trusted: [],
 			autoescape: true,
 		);
 

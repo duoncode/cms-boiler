@@ -22,13 +22,13 @@ final class Renderer implements RendererInterface
 	 * @param non-empty-string $template
 	 * @param DirsInput $dirs
 	 * @param array<string, mixed> $context
-	 * @param list<class-string> $whitelist
+	 * @param list<class-string> $trusted
 	 */
 	public function __construct(
 		private string $template,
 		private string|array $dirs,
 		private array $context = [],
-		private array $whitelist = [],
+		private array $trusted = [],
 		private bool $autoescape = true,
 	) {}
 
@@ -69,8 +69,8 @@ final class Renderer implements RendererInterface
 	private function createEngine(string|array $dirs): Engine
 	{
 		return $this->autoescape
-			? Engine::create($dirs, trusted: $this->whitelist)
-			: Engine::unescaped($dirs, trusted: $this->whitelist);
+			? Engine::create($dirs, trusted: $this->trusted)
+			: Engine::unescaped($dirs, trusted: $this->trusted);
 	}
 
 	private function isJsonOnlyRequest(Request $request): bool

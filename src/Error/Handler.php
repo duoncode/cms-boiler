@@ -24,7 +24,7 @@ final class Handler
 	private string $views;
 
 	/** @var list<class-string> */
-	private array $whitelist = [
+	private array $trusted = [
 		Node::class,
 		Finder::class,
 		Locales::class,
@@ -47,13 +47,13 @@ final class Handler
 		return $this;
 	}
 
-	/** @param list<class-string> $whitelist */
-	public function whitelist(array $whitelist, bool $replace = false): self
+	/** @param list<class-string> $trusted */
+	public function trusted(array $trusted, bool $replace = false): self
 	{
 		if ($replace) {
-			$this->whitelist = $whitelist;
+			$this->trusted = $trusted;
 		} else {
-			$this->whitelist = array_merge($this->whitelist, $whitelist);
+			$this->trusted = array_merge($this->trusted, $trusted);
 		}
 
 		return $this;
@@ -68,7 +68,7 @@ final class Handler
 				'debug' => env('CMS_DEBUG'),
 				'env' => env('CMS_ENV'),
 			],
-			whitelist: $this->whitelist,
+			trusted: $this->trusted,
 		);
 		$handler = new ErrorHandler($this->factory->responseFactory(), (bool) env('CMS_DEBUG'));
 		$handler->logger($this->logger);

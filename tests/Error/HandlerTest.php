@@ -25,7 +25,7 @@ class HandlerTest extends TestCase
 		$this->assertSame($handler, $result);
 	}
 
-	public function testWhitelistMergesByDefault(): void
+	public function testTrustedMergesByDefault(): void
 	{
 		$handler = new Handler(
 			root: __DIR__ . '/../',
@@ -33,13 +33,13 @@ class HandlerTest extends TestCase
 			factory: $this->factory(),
 		);
 
-		// Add to whitelist and verify method returns instance
-		$result = $handler->whitelist([self::class]);
+		// Add to trusted list and verify method returns instance
+		$result = $handler->trusted([self::class]);
 
 		$this->assertSame($handler, $result);
 	}
 
-	public function testWhitelistCanReplace(): void
+	public function testTrustedCanReplace(): void
 	{
 		$handler = new Handler(
 			root: __DIR__ . '/../',
@@ -47,8 +47,8 @@ class HandlerTest extends TestCase
 			factory: $this->factory(),
 		);
 
-		// Replace whitelist entirely
-		$result = $handler->whitelist([self::class], replace: true);
+		// Replace trusted list entirely
+		$result = $handler->trusted([self::class], replace: true);
 
 		$this->assertSame($handler, $result);
 	}
