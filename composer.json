@@ -29,11 +29,11 @@
 	},
 	"require": {
 		"php": "^8.5",
-		"duon/boiler": "^0.1"
+		"duon/boiler": "^0.3"
 	},
 	"require-dev": {
 		"duon/cms": "dev-main",
-		"duon/dev": "^2.5",
+		"duon/dev": "^3.0",
 		"duon/log": "^0.1",
 		"nyholm/psr7": "^1.5",
 		"nyholm/psr7-server": "^1",
