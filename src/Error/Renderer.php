@@ -68,7 +68,9 @@ final class Renderer implements RendererInterface
 	/** @param DirsInput $dirs */
 	private function createEngine(string|array $dirs): Engine
 	{
-		return new Engine($dirs, $this->autoescape, [], $this->whitelist);
+		return $this->autoescape
+			? Engine::create($dirs, trusted: $this->whitelist)
+			: Engine::unescaped($dirs, trusted: $this->whitelist);
 	}
 
 	private function isJsonOnlyRequest(Request $request): bool
