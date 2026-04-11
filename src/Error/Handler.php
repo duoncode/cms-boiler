@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Duon\Cms\Boiler\Error;
 
+use Duon\Cms\Cms;
 use Duon\Cms\Config;
-use Duon\Cms\Finder\Finder;
 use Duon\Cms\Locale;
 use Duon\Cms\Locales;
 use Duon\Cms\Node\Node;
@@ -26,7 +26,7 @@ final class Handler
 	/** @var list<class-string> */
 	private array $trusted = [
 		Node::class,
-		Finder::class,
+		Cms::class,
 		Locales::class,
 		Locale::class,
 		Config::class,
