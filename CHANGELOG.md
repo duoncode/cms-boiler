@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/duonrun/cms-boiler/compare/0.1.0...HEAD)
+## [Unreleased](https://github.com/duoncode/cms-boiler/compare/0.1.0...HEAD)
 
 ### Breaking
 
@@ -19,7 +19,7 @@
 
 - Updated the default trusted classes in `Error\Handler` to use `Duon\Cms\Cms` instead of the removed `Duon\Cms\Finder\Finder` class.
 
-## [0.1.0](https://github.com/duonrun/cms-boiler/releases/tag/0.1.0) (2026-01-31)
+## [0.1.0](https://github.com/duoncode/cms-boiler/releases/tag/0.1.0) (2026-01-31)
 
 Initial release.
 
