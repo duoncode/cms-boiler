@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b4597ce87c04453ba7767d3bdc6acdb4)](https://app.codacy.com/gh/duoncode/cms-boiler/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/b4597ce87c04453ba7767d3bdc6acdb4)](https://app.codacy.com/gh/duoncode/cms-boiler/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
-[![Psalm level](https://shepherd.dev/github/duoncode/cms-boiler/level.svg?)](https://duonrun.dev/cms-boiler)
+[![Psalm level](https://shepherd.dev/github/duoncode/cms-boiler/level.svg?)](https://duon.sh/cms-boiler)
 [![Psalm coverage](https://shepherd.dev/github/duoncode/cms-boiler/coverage.svg?)](https://shepherd.dev/github/duoncode/cms-boiler)
 <!-- prettier-ignore-end -->
 
